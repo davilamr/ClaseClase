@@ -12,6 +12,8 @@
 #include <stdlib.h>
 #include "utn.h"
 
+#define EXIT_ERROR -1
+
 int main(void)
 {
 	int resultado;

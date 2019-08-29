@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdio_ext.h>
 #include <stdlib.h>
+#include "utn.h"
 
 int getInt(	int *resultado,
 			char *mensaje,
