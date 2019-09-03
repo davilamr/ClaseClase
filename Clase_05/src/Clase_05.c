@@ -13,6 +13,16 @@
 #define QTY_EMPLEADOS 1000
 int imprimeArrayInt(int array[],int limite);
 int initArrayInt(int array[],int limite,int valor);
+int getArrayInt(	int array[],
+					int limite,
+					char *mensaje,
+					char *mensajeError,
+					int minimo,
+					int maximo,
+					int reintentos);
+int maximoArrayInt(int array[],int limite,int cantidaElementos,int *pResultado);
+int minimoArrayInt(int array[],int limite,int cantidaElementos,int *pResultado);
+int promedioArrayInt(int array[],int limite,int cantidaElementos,float *pResultado);
 
 int main(void)
 {
