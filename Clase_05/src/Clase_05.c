@@ -6,6 +6,15 @@
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
  ============================================================================
+
+  Hacer un programa con el siguiente menu:
+   1) ingresar nuevo nombre (no acepta nombres repetidos)
+   2) listar todo
+   3) ordenar por nombre
+   4) Borrar nombre. Se ingresa el nombre y si se encuentra se elimina de la lista
+
+	El programa permitira ingresar hasta 100 nombres.
+
  */
 
 #include <stdio.h>
@@ -13,6 +22,9 @@
 #include <stdlib.h>
 #include <string.h>
 #define QTY_EMPLEADOS 10
+#define QTY_NOMBRES 10
+#define QTY_CARACTERES 50
+
 int imprimeArrayInt(int array[],int limite);
 int initArrayInt(int array[],int limite,int valor);
 int getArrayInt(	int array[],
@@ -41,16 +53,41 @@ int getString(	char *pResultado,
 
 int ordenarArrayInt(int array[],int limite);
 
+int funcStr(char aNombres[][50])
+{
+	printf("%s",aNombres[0]);
+	return 0;
+}
+
+
+int imprimirArrayString(char aNombres[][QTY_CARACTERES], int cantidad);
+
 int main(void)
 {
-	int edadesEmpleados[QTY_EMPLEADOS] =  {22,1,44,2,1,88};
-	int cantidadDatos = 6 ;
-	int test;
-
+	//int edadesEmpleados[QTY_EMPLEADOS] =  {22,1,44,2,1,88};
+	//int cantidadDatos = 6 ;
+	//int test;
+	int i;
+	char aNombres[QTY_NOMBRES][QTY_CARACTERES];
 	char nombre[50];
-	getString(nombre,"\nNombre?:","Error\n",2,10,5);
-	printf("El nombre es %s",nombre);
+	//getString(nombre,"\nNombre?:","Error\n",2,10,5);
+	//printf("El nombre es %s",nombre);
 
+	for(i=0;i<5;i++){
+		getString(nombre,"Ingrese el nombre",
+				"ERROR", 1, 49, 2);
+		strcpy(aNombres[i], nombre);
+	}
+
+	imprimirArrayString(aNombres,QTY_NOMBRES);
+
+
+
+
+	//strncpy(aNombres[0],nombre,QTY_CARACTERES);
+
+	//funcStr(aNombres);
+	/*
 	//cantidadDatos = getArrayInt(edadesEmpleados,QTY_EMPLEADOS,"Edad?\n","Error\n",0,200,2);
 	if(cantidadDatos > 0)
 	{
@@ -60,7 +97,7 @@ int main(void)
 		maximoArrayInt(edadesEmpleados,cantidadDatos,&test);
 	}
 
-
+*/
 /*
 	if(initArrayInt(edadesEmpleados,QTY_EMPLEADOS,10) == 0)
 	{
@@ -266,7 +303,7 @@ int getString(	char *pResultado,
 				{
 					strncpy(pResultado,buffer,maximo+1);
 					retorno = 0;
-					break;
+				 	break;
 				}
 				printf("%s",pMensajeError);
 				reintentos--;
@@ -276,6 +313,17 @@ int getString(	char *pResultado,
 }
 
 
+int imprimirArrayString(char aNombres[][QTY_CARACTERES], int cantidad){
+	int i;
+	int retorno = -1;
+	if(aNombres != NULL && cantidad>0){
+		retorno = 0;
+		for(i=0;i<cantidad;i++){
+			printf("Nombre: %s \n",aNombres[i]);
+		}
+	}
+	return retorno;
+}
 
 
 
