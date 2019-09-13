@@ -32,7 +32,7 @@ struct sEmpleado
 int imprimirArrayString(char aNombres[][QTY_CARACTERES], int cantidad);
 int ordenarArrayString(char aNombres[][QTY_CARACTERES], int cantidad);
 int imprimirArrayEmpleados(struct sEmpleado *aEmpleado, int cantidad);
-
+int ordenarArrayEmpleados(struct sEmpleado *aEmpleado, int cantidad);
 
 
 int main(void)
@@ -90,7 +90,50 @@ int imprimirArrayString(char aNombres[][QTY_CARACTERES], int cantidad){
 	return retorno;
 }
 
-int ordenarArrayString(char aNombres[][QTY_CARACTERES], int cantidad){
+int ordenarArrayEmpleados(struct sEmpleado *aEmpleado, int cantidad){
+	int i;
+	int retorno = -1;
+	struct sEmpleado bEmpleado;
+	int fSwap;
+	if(aEmpleado != NULL && cantidad>0)
+	{
+		retorno = 0;
+		do
+		{
+			fSwap = 0;
+			for(i=0;i<cantidad-1;i++)
+			{
+				if(strncmp(aEmpleado[i].nombre,aEmpleado[i+1].nombre,QTY_CARACTERES)>0)
+				{
+					fSwap = 1;
+					bEmpleado = aEmpleado[i];
+					aEmpleado[i]=aEmpleado[i+1];
+					aEmpleado[i+1]=bEmpleado;
+				}
+				else if(strncmp(aEmpleado[i].nombre,aEmpleado[i+1].nombre,QTY_CARACTERES)==0)
+				{
+					if(strncmp(aEmpleado[i].apellido,aEmpleado[i+1].apellido,QTY_CARACTERES)>0)
+					{
+						fSwap = 1;
+						bEmpleado = aEmpleado[i];
+						aEmpleado[i]=aEmpleado[i+1];
+						aEmpleado[i+1]=bEmpleado;
+					}
+				}
+			}
+		}while(fSwap);
+	}
+	return retorno;
+}
+
+
+
+
+
+
+
+
+int ordenarArrayEmpleados(char aNombres[][QTY_CARACTERES], int cantidad){
 	int i;
 	int retorno = -1;
 	char buffer[QTY_CARACTERES];
@@ -115,15 +158,6 @@ int ordenarArrayString(char aNombres[][QTY_CARACTERES], int cantidad){
 	}
 	return retorno;
 }
-
-
-
-
-
-
-
-
-
 
 
 
