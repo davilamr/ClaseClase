@@ -15,11 +15,8 @@
 #include "utn.h"
 #include "Empleado.h"
 
-
-
 #define STATUS_EMPTY 0
 #define STATUS_NOT_EMPTY 1
-
 
 int main(void)
 {
