@@ -16,16 +16,20 @@ Persona* new_Persona()
 
 Persona* new_PersonaParametros(int idPersona,int status,char* nombre, int	edad, float altura)
 {
-	int retorno = -1;
+	Persona* retorno = NULL;
 	Persona* this;
 	this = new_Persona();
 	if(this != NULL)
 	{
-		if( 	setNombre(this,nombre) == 0 &&
-				setEdad(this,edad) == 0 &&
-				setAltura(this,altura)== 0)
+		if( 	per_setNombre(this,nombre) == 0 &&
+				per_setEdad(this,edad) == 0 &&
+				per_setAltura(this,altura)== 0)
 		{
-			retorno = 0;
+			retorno = this;
+		}
+		else
+		{
+			delete_Persona(this);
 		}
 
 	}
@@ -92,8 +96,6 @@ static int isValidEdad(int* edad)
 {
 	return 1;
 }
-
-
 
 
 int per_setAltura(Persona* this, float altura)
