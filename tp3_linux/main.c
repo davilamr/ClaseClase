@@ -18,59 +18,12 @@
     10. Salir
 *****************************************************/
 
-
-
-int f1(int *a, int b,int (*foo)(int,int)) {
-	*a = *a * 2;
-	*a = foo(*a,b);
-	return (*a);
-}
-
-int f2(int a, int b) {
-	 a = b*b;
-	 return a;
-}
-
-
-enum colors {lets,find,course};
 int main()
 {
-	FILE* pFile;
-	char id[4096];
-	char nombre[4096];
-	char horasTrabajadas[4096];
-	char sueldo[4096];
-	pFile = fopen("data.csv","r");
-	if(pFile != NULL)
-	{
-		while(!feof(pFile))
-		{
-			fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",
-							id,
-							nombre,
-							horasTrabajadas,
-							sueldo);
-
-			printf("%s\n",nombre);
-		}
-	}
-	fclose(pFile);
-	return 0;
-}
-
-
-
-
-
-
-
-
-/*
-int main()
-{
-    int option = 0;
+    int option = 1;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
+
     do{
         switch(option)
         {
@@ -80,5 +33,5 @@ int main()
         }
     }while(option != 10);
     return 0;
-}*/
+}
 
